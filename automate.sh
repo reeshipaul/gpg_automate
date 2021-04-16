@@ -13,9 +13,7 @@ then
 elif [$choice -eq '1'];
 then 
 	gpg --full-generate-key
-	gpg --list-secret-keys --keyid-format LONG
-	echo "enter the key ID"
-	read id
+	id= 'gpg --list-secret-keys --keyid-format LONG| egrep "[0-9a-fA-F]{25,45}"'	
 fi
 
 git config --global user.signingkey $id
